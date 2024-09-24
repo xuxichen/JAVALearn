@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常见事件</title>
+    <script>
+        /*
+        常见的事件：
+            1、点击事件
+                1、onclick：单击事件
+                2、ondbclick：双击事件
+            2、焦点事件
+                1、onblur：失去焦点
+                2、onfocus： 元素获得焦点
+            3、加载事件
+                1、onload：页面结束加载之后触发。
+            4、鼠标事件
+                1、onmousedown：	当元素上按下鼠标按钮时触发。
+                2、onmousemove：	当鼠标指针移动到元素上时触发。
+                3、onmouseout：	当鼠标指针移出元素时触发。
+                4、onmouseover：	当鼠标指针移动到元素上时触发。
+                5、onmouseup：	当在元素上释放鼠标按钮时触发。
+            5、键盘事件
+                1、onkeydown：在用户按下按键时触发。
+                2、onkeypress：在用户敲击按钮时触发。
+                3、onkeyup：当用户释放按键时触发。
+            6、选择和改变
+                1、onchange：在元素值被改变时运行的脚本。
+                2、onselect：在元素中文本被选中后触发。
+            7、表单事件
+                1、onreset：当表单中的重置按钮被点击时触发。HTML5 中不支持。
+                2、onsubmit：在提交表单时触发。
+         */
+        // 3、onload：页面结束加载之后触发。
+        window.onload = function () {
+            var input = document.getElementById("username");
+            // input.onblur = function () {
+            //     alert("onblur")
+            // }
+            // 4、onmouseover：
+            // input.onmouseover = function (event) {
+            //     console.log("***")
+            // }
+            // 5、onmousedown
+            // input.onmousedown = function (event) {
+            //     console.log(event.button)
+            // }
+            // 6、onkeydown
+            // input.onkeydown = function (event) {
+            //     console.log(event.keyCode)
+            // }
+        }
+
+        // 1、onblur：失去焦点
+        // input.onblur = function () {
+        //     alert(input.value)
+        // }
+        // // 2、onfocus： 元素获得焦点
+        // input.onfocus = function () {
+        //     alert("onfocus")
+        // }
+
+
+    </script>
+</head>
+<body>
+
+<input type="text" id="username">
+
+</body>
+</html>

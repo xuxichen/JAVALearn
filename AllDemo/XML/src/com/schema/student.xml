@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.itcast.cn/xml"
+          xsi:schemaLocation="http://www.itcast.cn/xml student.xsd"
+>
+    <student number="heima_0000">
+        <name></name>
+        <age>0</age>
+        <sex>female</sex>
+    </student>
+</students>

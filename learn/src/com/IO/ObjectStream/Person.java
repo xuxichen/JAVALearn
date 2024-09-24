@@ -1,0 +1,42 @@
+package com.IO.ObjectStream;
+
+import java.io.Serializable;
+
+public class Person implements Serializable {
+    // 序列号：保证类有改动，反序列化不会失败
+    private static final long serialVersionUID = 1;
+    public String name;
+    private Integer age;
+
+    public Person(){
+
+    }
+    public Person(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Element对象</title>
+    <style>
+        /*table{*/
+        /*    border: 1px solid red;*/
+        /*}*/
+        th {
+            border: 1px solid green;
+        }
+        td {
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+<!--    <a>点我试一试</a>-->
+<!--    <input type="button" value="设置a标签属性" id="setAttri">-->
+<!--    <input type="button" value="删除a标签属性" id="removeAttri">-->
+    <form action="#">
+        <input type="text" placeholder="请输入编号">
+        <input type="text" placeholder="请输入姓名">
+        <input type="text" placeholder="请输入性别">
+        <input type="submit" value="添加">
+    </form>
+
+
+    <table border="1" align="center">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>马云</td>
+            <td>男</td>
+            <td>
+                <a href="javascript:void(0)">删除</a>
+            </td>
+        </tr>
+    </table>
+    <script>
+
+        // var aList = document.getElementsByTagName("a")
+        // var setAttri = document.getElementById("setAttri");
+        // var removeAttri = document.getElementById("removeAttri");
+        // setAttri.onclick = function () {
+        //     for (let aListElement of aList) {
+        //         aListElement.setAttribute("href", "https://www.baidu.com")
+        //     }
+        // }
+        //
+        // removeAttri.onclick = function () {
+        //     for (let aListElement of aList) {
+        //         aListElement.removeAttribute('href')
+        //     }
+        // }
+        var submit = function (value) {
+            alert(value)
+        }
+
+    </script>
+</body>
+</html>

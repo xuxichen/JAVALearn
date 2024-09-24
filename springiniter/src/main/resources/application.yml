@@ -1,0 +1,37 @@
+person:
+  username: zhangsan
+  boss: true
+  birth: 2021/5/17
+  age: 20
+  pet:
+    name: tom
+    weight: 23
+  interests:
+    - 篮球
+    - 足球
+    - 乒乓球
+  animal:
+    - 猫
+    - 狗
+    - 牛
+  score:
+    english:
+      teacher: Miss 杨
+      group: 7年纪
+    math:
+      teacher: 周老师
+      group: 7年纪
+  salarys:
+    - 1800.00
+    - 2500.00
+  allPets:
+    cat:
+      - {name: 英短, weight: 23 }
+      - name: 梨花
+        weight: 23
+      - name: 花猫
+        weight: 23
+    dog:
+      - {name: 金毛, weight: 23 }
+      - {name: 德牧, weight: 23 }
+      - {name: 二哈, weight: 23 }

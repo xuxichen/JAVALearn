@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--外部 本地-->
+<!DOCTYPE students SYSTEM "student.dtd">
+
+<!--外部 网络-->
+<!--<!DOCTYPE 跟标签 PULIC "dtd文件名" "dtd文件的网络位置URL">-->
+
+
+<!--内部dtd-->
+<!--<!DOCTYPE students [-->
+<!--        <!ELEMENT students (student*)>-->
+<!--        <!ELEMENT student (name,age,sex)>-->
+<!--        <!ELEMENT name (#PCDATA)>-->
+<!--        <!ELEMENT age  (#PCDATA)>-->
+<!--        <!ELEMENT sex (#PCDATA)>-->
+<!--        <!ATTLIST student number ID #REQUIRED>-->
+<!--        ]>-->
+
+<students>
+    <student number="s1">
+        <name></name>
+        <age></age>
+        <sex></sex>
+    </student>
+    <student number="s2">
+        <name></name>
+        <age></age>
+        <sex></sex>
+    </student>
+
+</students>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<students>
+    <student number="s1">
+        <name>zhangsan</name>
+        <age>19</age>
+        <sex>男</sex>
+    </student>
+    <student number="s2">
+        <name id="ces">历时</name>
+        <age>5000</age>
+        <sex>女</sex>
+    </student>
+
+</students>

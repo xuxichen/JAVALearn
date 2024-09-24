@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="TomcatDemo">
+    <output-path>$PROJECT_DIR$/out/artifacts/TomcatDemo</output-path>
+    <root id="root">
+      <element id="archive" name="TomcatDemo.jar">
+        <element id="module-output" name="TomcatDemo" />
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$" />
+    </root>
+  </artifact>
+</component>

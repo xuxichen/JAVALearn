@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://www.cnblogs.com/queenya/p/13572754.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin">
+    <meta name="description" content="VUE面试题 1、v-show 和 v-if的区别，v-show 和 keep-alive 的区别 答案：v-show是 CSS display 控制显示和隐藏 v-if 是组件真正的渲染和销毁，而不">
+    <meta property="og:description" content="VUE面试题 1、v-show 和 v-if的区别，v-show 和 keep-alive 的区别 答案：v-show是 CSS display 控制显示和隐藏 v-if 是组件真正的渲染和销毁，而不">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>前端面试题汇总 - queenya_zhang - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="https://common.cnblogs.com/favicon.svg" type="image/svg+xml">
+    
+    <link rel="stylesheet" href="prefectTest/blog-common.min.css">
+    <link id="MainCss" rel="stylesheet" href="prefectTest/bundle-bluesky.min.css">
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="prefectTest/bundle-bluesky-mobile.min.css">
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/queenya/rss">
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/queenya/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/queenya/wlwmanifest.xml">
+    <script src="prefectTest/osd.js"></script><script async="" src="prefectTest/analytics.js"></script><script>
+        var currentBlogId = 614168;
+        var currentBlogApp = 'queenya';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'BlueSky';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2020-09-02 06:23';
+        </script>
+    <script src="prefectTest/jquery-2.2.0.min.js"></script>
+    <script src="prefectTest/blog-common.min.js"></script><style type="text/css">.medium-zoom-overlay{position:fixed;top:0;right:0;bottom:0;left:0;opacity:0;transition:opacity .3s;will-change:opacity}  .medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}  .medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}  .medium-zoom-image--hidden{visibility:hidden}  .medium-zoom-image--opened{position:relative;cursor:pointer;cursor:zoom-out;will-change:transform}</style>
+    
+    
+    
+<meta http-equiv="origin-trial" content="A+b/H0b8RPXNaJgaNFpO0YOFuGK6myDQXlwnJB3SwzvNMfcndat4DZYMrP4ClJIzYWo3/yP2S+8FTZ/lpqbPAAEAAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A9ZgbRtm4pU3oZiuNzOsKcC8ppFSZdcjP2qYcdQrFKVzkmiWH1kdYY1Mi9x7G8+PS8HV9Ha9Cz0gaMdKsiVZIgMAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxL6oBxcpn5rQDPKSAs+d0oxNyJYq2/4esBUh3Yx5z8QfcLu+AU8iFCXYRcr/CEEfDnkxxLTsvXPJFQBxHfvkgMAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9KPtG5kl3oLTk21xqynDPGQ5t18bSOpwt0w6kGa6dEWbuwjpffmdUpR3W+faZDubGT+KIk2do0BX2ca16x8qAcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A3HucHUo1oW9s+9kIKz8mLkbcmdaj5lxt3eiIMp1Nh49dkkBlg1Fhg4Fd/r0vL69mRRA36YutI9P/lJUfL8csQoAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><script src="prefectTest/pubads_impl_2021030401.js" async=""></script><link rel="preload" href="prefectTest/f.txt" as="script"><script type="text/javascript" src="prefectTest/f.txt"></script><link rel="prefetch" href="https://00722c6142c86c479aad327ece4dce72.safeframe.googlesyndication.com/safeframe/1-0-37/html/container.html"><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-37/html/container.html"></head>
+<body class="has-navbar has-bannerbar">
+    <a name="top"></a>
+        <a target="_blank" href="https://developer.aliyun.com/learning/trainingcamp/sc/3?spm=a1z389.11499242.0.0.65452413ceQQ9r&amp;utm_content=g_1000250169" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;aliyun-blog-bannerbar-pc&#39;)">
+            <div class="bannerbar aliyun forpc">
+                <div class="bannerbar aliyun forpc">
+                    <img src="prefectTest/35695-20210309211229118-1704756334.jpg" alt="">
+                </div>
+            </div>
+        </a>
+
+            <div id="bannerbar" class="bannerbar-mobile formobile">
+                <a href="https://developer.aliyun.com/learning/trainingcamp/java/2?utm_content=g_1000245293" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;aliyun-blog-mobile-banner&#39;)">
+                    <img src="prefectTest/35695-20210310185613939-903381741.png" alt="">
+                </a>
+            </div>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="prefectTest/logo.svg" alt="博客园Logo"></a></li>
+                <li><a href="https://www.cnblogs.com/" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;skin-navbar-sitehome&#39;)">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;skin-navbar-news&#39;)">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;skin-navbar-q&#39;)">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;skin-navbar-brands&#39;)">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;skin-navbar-ing&#39;)">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;skin-navbar-edu&#39;)">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3">
+                        <button type="submit" id="zzk_search_button">
+                            <img src="prefectTest/search.svg" alt="搜索">
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔" style="display: none;">
+                        <img id="new_post_icon" class="navbar-icon" src="prefectTest/newpost.svg" alt="写随笔">
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客" style="display: none;">
+                        <img id="myblog_icon" class="navbar-icon" src="prefectTest/myblog.svg" alt="我的博客">
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息" style="display: none;">
+                        <img id="msg_icon" class="navbar-icon" src="prefectTest/message.svg" alt="短消息">
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown" style="display: none;">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="prefectTest/avatar-default.svg" alt="用户头像">
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" onclick="logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/" style="display: inline;">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="login()" style="display: inline;">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/queenya/"><img id="blogLogo" src="prefectTest/logo.gif" alt="返回主页"></a>
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/queenya/">queenya_zhang</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/queenya/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/queenya_zhang">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/queenya/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<span id="stats_post_count">随笔 - 13&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 1&nbsp; </span>
+<span id="stats-total-view-count">阅读 - 
+<span title="总阅读数: 14220">
+14220</span></span>
+
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class="postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/queenya/p/13572754.html">
+    <span>前端面试题汇总</span>
+    
+
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body blogpost-body-html">
+<h3>VUE面试题</h3>
+<p>1、v-show 和 v-if的区别，v-show 和 keep-alive 的区别</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：v-show是 CSS display 控制显示和隐藏</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">v-if 是组件真正的渲染和销毁，而不是显示和隐藏</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">频繁切换显示状态用 v-show，否则用 v-if</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">keep-alive 是在vue 框架层级进行的JS 对象渲染</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">一般简单的可用 v-show，</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">复杂一点的一般用 keep-alive，keep-alive 通常用于 tab 的切换</span></p>
+<p>2、为何 v-for 要用 key</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：必须要用 key, 而且不能用 index 和 random，</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">key是vue中vnode的唯一标记，通过这个key，我们的diff操作可以更准确，更快速</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">在 diff 算法中用 tag 和 key来判断，是否是sameNode</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">可以减少渲染次数，提高渲染性能</span></p>
+<p>3、描述 Vue 组件生命周期（有父子组件的情况）</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：单组件生命周期，生命周期可分为</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">挂载阶段（</span>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">beforeCreate:此阶段为实例初始化之后,此时数据观察和事件机制还没有形成,不能获取到dom节点； </span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">created：此阶段的vue实例已经创建,仍不能获取DOM 节点.把vue 的一个实例给初始化了，只是存在于 js 内存的一个变量而已，这个时候并没有开始渲染；</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">beforeMount:在这一阶段,我们虽然还不能获取到具体 DOM 元素,但 vue 挂载的根节点已经创建,下面 vue 对DOM 的操作将围绕这个根元素继续进行,beforeMount 这个阶段是过渡性的,一般一个项目只能用到一两次；</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">mounted：组件真正绘制完成了，页面已经渲染完了,数据和DOM 都已被渲染出来,一般我们的异步请求都写在这里</span><span style="color: rgba(153, 51, 0, 1)">)</span></li>
+</ul>
+</li>
+<li><span style="color: rgba(153, 51, 0, 1)">更新阶段（</span>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">beforeUpdate: 这一阶段，vue遵循数据驱动DOM 的原则，beforeUpdate 函数在数据更新后没有立即更新数据，但是DOM 数据会改变，这是双向数据绑定的作用； </span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">updated：这一阶段，DOM 会和更改过的内容同步)</span></li>
+</ul>
+</li>
+<li><span style="color: rgba(153, 51, 0, 1)">销毁阶段（</span>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">beforeDestroy：在上一阶段vue已经成功通过数据驱动DOM 的修改，当我们不再需要 vue 操纵 DOM 时，就要销毁 vue，也就是清除vue 实例与 DOM 的关联，调用destroy方法可以销毁当前组件。在销毁前，会触发 beforeDestroy 钩子函数；</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">destroyed：在销毁后，会触发destroyed 钩子函数）</span></li>
+</ul>
+</li>
+</ul>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">beforeDestroy要做的事：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">自定义事件解除绑定：（eventBus 等）</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">销毁定时任务：（setTimeout,setInterval等）</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">绑定的window 或 document 事件要销毁</span></li>
+</ul>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">总之就是该销毁的要在这里销毁，不要让他们留在内存中</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">具体参考：<a title="vue 生命周期" href="https://www.cnblogs.com/queenya/p/13416654.html" target="_blank"><span style="color: rgba(153, 51, 0, 1)">https://www.cnblogs.com/queenya/p/13416654.html</span></a></span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">多组件生命周期：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">挂载阶段（加载渲染过程）：</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">父 beforeCreate --&gt; 父 created --&gt; 父 beforeMount --&gt; 子 beforeCreate --&gt; 子 created --&gt; 子 beforeMount --&gt; 子 mounted --&gt; 父 mounted</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">更新阶段：</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">父 beforeUpdate --&gt; 子 beforeUpdate --&gt; 子 updated --&gt; 父 updated</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">销毁阶段：</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">父 beforeDestroy --&gt; 子 beforeDestroy --&gt; 子 destroyed --&gt; 父 destroyed</span></li>
+</ul>
+<p>&nbsp;</p>
+<p>4、Vue 组件如何通讯</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">父子组件通讯：使用属性和触发事件，props，$emit，this.$emit 调用父组件的事件，父组件向子组件传递一个信息，或者说子组件向父组件触发一个事件</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">组件之间没有关系或层级较深：使用自定义事件 ，event是vue实例，vue本身就具有自定义事件的能力。调用自定义事件： event.$emit('xxx', 变量名)；绑定自定义事件：event.$on('xxx', 函数名字)。在beforeDestroy 要做的一件事是及时解绑自定义事件，及时销毁，否则可能造成内存泄漏，写法：event.$off('xxx', 函数名).</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">vuex 通讯</span></li>
+</ul>
+<p>5、描述组件渲染和更新的过程</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">初次渲染过程：</span></li>
+</ul>
+<ol>
+<li><span style="color: rgba(153, 51, 0, 1)">解析模板为 render 函数（或在开发环境已完成， vue-loader）</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">触发响应式，监听 data 属性 getter，setter</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">执行 render 函数，生成 vnode, patch(elem, vnode)</span></li>
+</ol>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">更新过程：</span></li>
+</ul>
+<ol>
+<li><span style="color: rgba(153, 51, 0, 1)">修改 data，触发 setter （此前在 getter 中 已被 监听）</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">重新执行 render 函数，生成 newVnode</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">patch(vnode, newVnode)</span></li>
+</ol>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)"><img src="prefectTest/2086015-20200828001411796-2025830332.png" alt="" loading="lazy" class="medium-zoom-image"></span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">异步渲染：</span></li>
+</ul>
+<ol>
+<li><span style="color: rgba(153, 51, 0, 1)">回顾 $nextTick，（以下这是对&nbsp;$nextTick的回顾： $nextTick: vue 是异步渲染；data改变之后，DOM 不会立刻渲染；$nextTick 会在 DOM 渲染之后被触发，以获取最新 DOM 节点。vue 为何是异步渲染，$nextTick何用？异步渲染（以及合并data修改），以提高渲染性能，$nextTick 在DOM 更新完之后，触发回调。另外，在 vue 中可以通过 ref 获取元素：给元素添加ref属性并设置名称，然后通过 this.$refs.ref 属性名称获取该DOM 元素）总结：1、异步渲染，$nextTick待 DOM 渲染完再回调；2、页面渲染时会将 data 的修改做整合，多次data修改只做一次渲染。</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">汇总 data 的修改，一次性更新视图</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">减少 DOM 操作次数，提高性能</span></li>
+</ol>
+<p>6、双向事件绑定 v-model 的实现原理</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：通过 input 元素的 value = this.name</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">绑定 input 事件 this.name = $event.target.value</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">data 更新触发 re-render</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">数据双向绑定的原理可参考：<a title="数据双向绑定原理" href="https://www.cnblogs.com/queenya/p/13426695.html" target="_blank"><span style="color: rgba(153, 51, 0, 1)">https://www.cnblogs.com/queenya/p/13426695.html</span></a>&nbsp;的第3 点</span><strong><br></strong></p>
+<p>7、对 MVVM 的理解</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：参考：<a title="MVVM 理解" href="https://www.cnblogs.com/queenya/p/13426695.html" target="_blank"><span style="color: rgba(153, 51, 0, 1)">https://www.cnblogs.com/queenya/p/13426695.html</span></a>&nbsp;第1、2点</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)"><img src="prefectTest/2086015-20200828144655100-789834958.png" alt="" loading="lazy" class="medium-zoom-image"></span></p>
+<p>8、computed 有何特点，computed 和 watch，methods 的区别</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">computed： 有缓存，data 不变不会重新计算；提高性能。</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">computed 为什么需要缓存？简单说就是可以提高性能。假设我们有一个性能开销比较大的计算属性A,它需要遍历一个巨大的数组做大量的计算，然后我们可能有其他的属性依赖于A，如果没有缓存，将不可避免的多次执行A 的getter，如果不希望有缓存请用方法代替</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">computed 和 methods的区别: computed 计算属性是基于它的响应式依赖进行缓存的，只在相关响应式依赖发生改变时它们才会重新求值，这意味着只要原属性还没发生改变，多次访问相关属性，计算属性会立即返回之前的计算结果，而不必再次执行函数；而 methods 每当触发重新渲染时，调用方法总会再次执行函数</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">computed 和 watch的区别：computed 默认只要 getter，不过需要时也可以提供 setter；watch 侦听器，当需要在数据变化时执行异步或开销较大的操作时，watch是最有用的，使用 watch选项允许执行异步操作（访问一个API）,限制我们执行该操作的频率，并在得到最终结果前，设置中间状态，这些都是计算属性无法做到的</span></li>
+
+</ul>
+<p style="margin-left: 30px"><span style="color: rgba(255, 0, 0, 1)">（</span></p>
+<ul>
+<li><span style="color: rgba(255, 0, 0, 1)">computed 是属性</span></li>
+
+</ul>
+<ol>
+<li style="margin-left: 30px"><span style="color: rgba(255, 0, 0, 1)">当需要根据已有数据产生一些派生数据的时候，可使用计算属性</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(255, 0, 0, 1)">注意：计算属性不支持异步操作，因为计算属性一般要绑定到模板中</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(255, 0, 0, 1)">更重要的一点是：计算属性会缓存调用的结果，提高性能</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(255, 0, 0, 1)">计算属性必须有返回值，没有返回值就没有意义</span></li>
+
+</ol>
+<ul>
+<li><span style="color: rgba(255, 0, 0, 1)">watch 是一个功能：</span></li>
+
+</ul>
+<ol>
+<li style="margin-left: 30px"><span style="color: rgba(255, 0, 0, 1)">watch不需要返回值，根据某个数据变化执行xx逻辑</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(255, 0, 0, 1)">watch可以执行异步操作</span></li>
+
+</ol>
+<p style="margin-left: 30px"><span style="color: rgba(255, 0, 0, 1)">）</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">computed 和 watch的使用场景：如果一个数据需要经过复杂计算就用 computed；如果一个数据需要被监听并且对数据做一些操作就用watch；watch擅长处理的场景：一个数据影响多个数据；computed擅长处理的场景：一个数据受多个数据影响</span></li>
+
+</ul>
+<p>9、为何组件 data 必须是一个函数？</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：<span style="color: rgba(255, 0, 0, 1)">防止组件重用的时候导致数据相互影响。</span>根本上 .vue 文件编译出来是一个类，这个组件是一个class，我们在使用这个组件的时候相当于对class 实现实例化，在实例化的时候执行data，如果 data不是函数的话拿每个组件的实例结果都一样了，共享了，如果 data不是函数的话在一个地方改了，另一个地方也改了。如果data是函数在左边实例化一个右边实例化一个都会执行这个函数，这两个data都在闭包中，两个不会相互影响</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)"><img src="prefectTest/2086015-20200828144926765-929997092.png" alt="" loading="lazy" class="medium-zoom-image"></span></p>
+<p>10、Ajax 请求应该放在哪个生命周期</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：应该放在 mounted 生命周期，JS 是单线程的，Ajax 异步获取数据，放在 mounted 之前没有用，只会让逻辑更加混乱</span></p>
+<p>11、如何将组件所有 props 传递给子组件？</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：$props　　&lt;user v-bind="$props"&gt;</span></p>
+<p><span style="color: rgba(0, 0, 0, 1)">12、如何自己实现 v-model？</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：<img src="prefectTest/2086015-20200828145415929-707137042.png" alt="" loading="lazy" class="medium-zoom-image"></span></p>
+<p><span style="color: rgba(0, 0, 0, 1)">13、多个组件有相同逻辑，如何抽离？</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案： 用 mixin, mixin 的一些缺点</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">mixin 的用法：；定义一个 js文件将export default 中的共有内容写到里面，然后在组件中import，放到 mixin数组中</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)"><img src="prefectTest/2086015-20200828150352393-1211637052.jpg" alt="" loading="lazy" class="medium-zoom-image"><img src="prefectTest/2086015-20200828150400436-1994225499.jpg" alt="" loading="lazy" class="medium-zoom-image"></span></p>
+<p>&nbsp;</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">mixin 的一些缺点：</span></p>
+<ol>
+<li><span style="color: rgba(153, 51, 0, 1)">变量来源不明，不利于阅读。我们希望编程红的变量和方法是可查找的，但是 mixin 引入的内容编辑是不可寻找</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">多mixin 可能造成命名冲突</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">迷信和组件可能出现多对多的关系（一个组件引用多个 mixin, 一个mixin被多个组件引用），复杂度较高。多对多是最复杂的关系，很容易剪不断理还乱</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ol>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">在vue3 提出的 Composition API 旨在解决这些问题</span></p>
+<p><span style="color: rgba(0, 0, 0, 1)">14、何时使用异步组件？</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">加载大组件</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">路由异步加载</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p><span style="color: rgba(0, 0, 0, 1)">15、何时需要使用 keep-alive？</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">缓存组件，不需要重复渲染</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">如多个静态 tab 页的切换</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">优化性能</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p>16、何时需要使用 beforeDestroy？</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">解除自定义事件 event.$off</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">清除定时器</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">解绑自定义的 DOM 事件，如 window scroll等</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p>&nbsp;17、什么是作用域插槽？</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：父组件通过 slot 获取子组件中的的值：子组件中通过自定义属性绑定数据，父组件通过 template的 v-slot 属性来接收数据</span></p>
+<p style="margin-left: 30px"><img src="prefectTest/2086015-20200828142117996-2061614703.png" alt="" loading="lazy" class="medium-zoom-image"></p>
+<p>18、vuex 中 action 和 mutation有何区别？</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)"> action 中处理异步，mutation 不可以</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">mutation 做原子操作</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">action 可以整合多个 mutation</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p><span style="color: rgba(0, 0, 0, 1)">19、vue-router 常用的路由模式</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">hash 默认：有 #，也就是路由的hash，后面是路由</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">H5 history(需要服务端支持)：没有 #，需要服务端再次，无特殊需求可选择 hash模式</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p><span style="color: rgba(0, 0, 0, 1)">20、如何配置 vue-router 异步加载？</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：异步加载性能会优化很多，配置：component: () =&gt; import(......)</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(0, 0, 0, 1)"><img src="prefectTest/2086015-20200828143509805-642380269.png" alt="" loading="lazy" class="medium-zoom-image"></span></p>
+<p>21、请用 vnode 描述一个 DOM 结构</p>
+<p style="margin-left: 30px">答案：</p>
+<p style="margin-left: 30px"><img src="prefectTest/2086015-20200828163217966-718967369.png" alt="" loading="lazy" class="medium-zoom-image"></p>
+<p>22、监听 data 变化的核心 API 是什么？</p>
+<p style="margin-left: 60px"><span style="color: rgba(153, 51, 0, 1)">答案： Object.defineProperty,以及要想一下如何深度监听、监听数组，有何缺点</span></p>
+<p style="margin-left: 60px"><span style="color: rgba(153, 51, 0, 1)">如何深度监听：</span></p>
+<p style="margin-left: 60px"><span style="color: rgba(153, 51, 0, 1)"><img src="prefectTest/2086015-20200828164616653-2145349299.png" alt="" loading="lazy" class="medium-zoom-image"><img src="prefectTest/2086015-20200828164628248-856927862.png" alt="" loading="lazy" class="medium-zoom-image"><img src="prefectTest/2086015-20200828164645301-561665795.png" alt="" loading="lazy" class="medium-zoom-image"></span></p>
+<p style="margin-left: 30px">&nbsp;</p>
+<p style="margin-left: 60px"><span style="color: rgba(153, 51, 0, 1)">如何监听数组：</span></p>
+<p style="margin-left: 60px"><span style="color: rgba(153, 51, 0, 1)"><img src="prefectTest/2086015-20200828165830524-762393245.png" alt="" loading="lazy" class="medium-zoom-image"><img src="prefectTest/2086015-20200828165839340-816677951.png" alt="" loading="lazy" class="medium-zoom-image"></span></p>
+<p style="margin-left: 60px"><span style="color: rgba(153, 51, 0, 1)">不可像以下这样做会污染全局的Array 原型：</span></p>
+<p style="margin-left: 60px"><span style="color: rgba(153, 51, 0, 1)"><img src="prefectTest/2086015-20200828170054805-1985733181.png" alt="" loading="lazy" class="medium-zoom-image"></span></p>
+<p style="margin-left: 60px"><span style="color: rgba(153, 51, 0, 1)">缺点：</span></p>
+<ul>
+<li style="list-style-type: none">
+<ul>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">深度监听，需要递归到底，一次性计算量大</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">无法监听新增/删除属性（所以需要 vue.set vue.delete 实现新增/删除属性）</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">无法监听原生数组，需要特殊处理</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p>23、vue 如何监听数组变化</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">Object.defineProperty 不能监听数组变化</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">重新定义原型，重写push pop 等方法，实现监听</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)"><img src="prefectTest/2086015-20200828165830524-762393245.png" alt="" loading="lazy" class="medium-zoom-image"></span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)"><img src="prefectTest/2086015-20200828165839340-816677951.png" alt="" loading="lazy" class="medium-zoom-image"></span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">Proxy 可以原生支持监听数组变化</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p>24、请描述响应式原理</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">监听data变化，监听data属性getter，setter（包括数组）参考：<a title="双向绑定原理" href="https://www.cnblogs.com/queenya/p/13426695.html" target="_blank"><span style="color: rgba(153, 51, 0, 1)">https://www.cnblogs.com/queenya/p/13426695.html</span></a>&nbsp;第3点</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">组件渲染和更新的流程：</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)"><img src="prefectTest/2086015-20200828172721212-836149298.png" alt="" loading="lazy" class="medium-zoom-image"></span></p>
+<p>25、diff 算法的时间复杂度</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">O(n)</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">在O(n^3)基础上做了一些调整</span></p>
+<p>26、简述diff算法过程：</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">patch(elem, vnode) 和 patch(vnode, newVnode)</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">patchVnode 和 addVnode 和 removeVnode</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">updateChildren(key 的重要性)</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p>27、Vue 常见性能优化方式</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">合理使用v-show 和 v-if</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">合理使用computed</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">v-for 时要加key，以及避免和 v-if 同时使用</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">自定义事件、DOM 事件及时销毁</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">合理使用异步组件</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">合理使用keep-alive</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">data层级不要太深（因为深度监听一次性监听到底）</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">使用 vue-loader 在开发环境做模板编译（预编译）</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">webpack层面的优化</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">前端通用的性能优化，如果图片懒加载</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">使用 SSR</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p><span style="color: rgba(0, 0, 0, 1)">28、vuex</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">vuex 是一个专门为 vue.js 应用程序开发的状态管理模式,它采用集中式存储管理应用的所有组件的状态,并以相应的规则保证状态以一种可预测的方式发生变化.</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">构建中大型单页应用是这个状态管理应该包含以下几个部分:</span></p>
+<ul>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">state,驱动应用的数据源</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">view,以声明方式将state映射到视图</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">actions,响应在view上的用户输入导致的状态变化</span></li>
+
+
+
+
+
+
+
+</ul>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">几个基本概念(属性):</span></p>
+<ol>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">state:单一状态树,储存的单一状态,是储存的基本数据.vuex 的状态储存是响应式的</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">getters:可以认为是 store的计算属性,对 state加工,是派生出来的数据,返回值会根据它的依赖被缓存起来,且只有当它的依赖值发生了改变才会重新计算</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">mutation:更改 vuex 的store中的状态的唯一方法是提交 mutation(mutation提交修改状态).每个mutation 都有一个字符串的事件类型(type)和一个回调函数(handler),这个回调函数就是我们实际进行状态更改的地方,并且它会接受 state 作为第一个参数,使用 store.commit, (mutation是同步的)</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">action: 像一个装饰器,action提交的是mutation,而不是直接更改状态,action可以包含任意异步操作,通过store.dispatch 方法触发,也可以使用 mapAction</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">module: 是 store 分割的模块,每个模块拥有直接的 state,getter,mutation,action, 甚至是嵌套子模块 -- 从上至下进行同样方式的分割模块内部的 action,局部状态通过 context.state暴露出来,根节点则为 context.rootState</span></li>
+
+
+
+
+
+
+
+</ol>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">用于Vue 组件(API):</span></p>
+<ul>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">dispatch</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">commit</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">mapState</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">mapGetters</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">mapMutations</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">mapActions</span></li>
+
+
+
+
+
+
+
+</ul>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">vuex设计思想,借鉴了 Flux,Redux,将数据存放到全局的store,再将 store挂载到每个 vue实例组件中,利用 vue.js 的细粒对数据响应机制来进行高效的状态更新</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">vuex的store是如何挂载注入到组件中的呢?</span></p>
+<ol>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">在vue 项目中先安装 vuex</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">利用vue 的插件机制,使用 vue.use(vuex)时,会调用 vuex 的install方法,安装 vuex</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">applyMixin 方法使用 vue 混入机制,vue的生命周期 beforeCreate 钩子函数混入 vuexInit 方法</span></li>
+
+
+
+
+
+
+
+</ol>
+<p style="margin-left: 60px"><span style="color: rgba(153, 51, 0, 1)">vuex是利用 vue 的 mixin 混入机制,在beforeCreate 钩子函数混入 vuexInit 方法,vuexInit 方法实现了 store 注入 vue 组件实例,并注册了 vuex store 的引用属性 $store</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">vuex 的state 和 getter 是如何映射到各个组件实例中响应式更新状态的?</span></p>
+<p style="margin-left: 60px"><span style="color: rgba(153, 51, 0, 1)">vuex 的state 状态是响应式,是借助 vue的data是响应式,将 state存入vue实例组件的data中;vuex 的getters则是借助 vue的计算属性 computed 实现数据实时监听</span></p>
+<h3>Webpack 面试题</h3>
+<p>1、前端代码为何要进行构建和打包</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">代码方面：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">体积更小（Tree-Shaking、压缩、合并），加载更快</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">编译高级语言或语法（TS,ES6+,模块化，scss）</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">兼容性和错误检查（Polyfilll, postcss, eslint）</span></li>
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p><span style="color: rgba(153, 51, 0, 1)">　　研发流程方面：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">统一、高效的开发环境</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">统一的构建流程和产出标准</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">集成公司构建规范（体测、上线等）</span></li>
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p>2、module、chunk、bundle分别是什么意思，有何区别</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">module -- 各个源码文件，webpack 中一切皆模块</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">chunk -- 多模块合并成的，如 entry import() splitChunk</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">bundle -- 最终的输出文件</span></li>
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p>3、loader 和 plugin 的区别</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">loader：模块转换器，如 less --&gt; css, 如识别 js 结尾的，css 结尾的，图片格式结尾的，通过 loader 转换成相应的文件格式</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">plugin：扩展插件，如 HtmlWebpackPlugin</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">常见 loader 和 plugin：</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)"><a title="常见 loader" href="https://www.webpackjs.com/loaders/" target="_blank"><span style="color: rgba(153, 51, 0, 1)">https://www.webpackjs.com/loaders/</span></a>，</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">本人在项目中常用到的loader有</span></p>
+<ol>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">babel-loader --&nbsp;This package allows transpiling JavaScript files using&nbsp;<a href="https://github.com/babel/babel"><span style="color: rgba(153, 51, 0, 1)">Babel</span></a>&nbsp;and&nbsp;<a href="https://github.com/webpack/webpack"><span style="color: rgba(153, 51, 0, 1)">webpack</span></a>.</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">css-loader --&nbsp;<code>css-loader</code>&nbsp;解释(interpret)&nbsp;<code>@import</code>&nbsp;和&nbsp;<code>url()</code>&nbsp;，会&nbsp;<code>import/require()</code>&nbsp;后再解析(resolve)它们。引用资源的合适 loader 是&nbsp;<a href="https://www.webpackjs.com/loaders/file-loader/"><span style="color: rgba(153, 51, 0, 1)">file-loader</span></a>和&nbsp;<a href="https://www.webpackjs.com/loaders/url-loader/"><span style="color: rgba(153, 51, 0, 1)">url-loade</span></a></span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">expose-loader --&nbsp;The expose loader adds modules to the global object. This is useful for debugging, or&nbsp;<a href="https://webpack.js.org/guides/shimming/"><span style="color: rgba(153, 51, 0, 1)">supporting libraries that depend on libraries in globals</span></a>.，模块必须在你的 bundle 中被&nbsp;<code>require()</code>&nbsp;过</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">file-loader --&nbsp;Instructs webpack to emit the required object as file and to return its public URL</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">json-loader --&nbsp;注意：由于&nbsp;<code>webpack &gt;= v2.0.0</code>&nbsp;默认支持导入 JSON 文件。如果你使用自定义文件扩展名，你可能仍然需要使用此 loader。See the&nbsp;<a href="https://webpack.js.org/guides/migrating/#json-loader-is-not-required-anymore"><span style="color: rgba(153, 51, 0, 1)">v1.0.0 -&gt; v2.0.0 Migration Guide</span></a>&nbsp;for more information</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">less-loader --&nbsp;Compiles Less to CSS.</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">postcss-loader --&nbsp;Loader for&nbsp;<a href="http://webpack.js.org/"><span style="color: rgba(153, 51, 0, 1)">webpack</span></a>&nbsp;to process CSS with&nbsp;<a href="http://postcss.org/"><span style="color: rgba(153, 51, 0, 1)">PostCSS</span></a></span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">style-loader --&nbsp;&nbsp;Adds CSS to the DOM by injecting a&nbsp;<code>&lt;style&gt;</code>&nbsp;tag</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">url-loader --&nbsp;Loads files as&nbsp;<code>base64</code>&nbsp;encoded URL</span></li>
+
+
+
+
+
+
+
+
+
+
+</ol>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)"><a title="常见 plugin" href="https://www.webpackjs.com/plugins/" target="_blank"><span style="color: rgba(153, 51, 0, 1)">https://www.webpackjs.com/plugins/</span></a></span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">本人在项目中常用的 plugin 有：</span></p>
+<ol>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">HtmlWebpackPlugin（html-webpack-plugin） --&nbsp;<a href="https://github.com/jantimon/html-webpack-plugin"><span style="color: rgba(153, 51, 0, 1)"><code>HtmlWebpackPlugin</code></span></a>简化了HTML文件的创建，以便为你的webpack包提供服务。这对于在文件名中包含每次会随着编译而发生变化哈希的 webpack bundle 尤其有用。 你可以让插件为你生成一个HTML文件，使用<a href="https://lodash.com/docs#template"><span style="color: rgba(153, 51, 0, 1)">lodash模板</span></a>提供你自己的模板，或使用你自己的<a href="https://www.webpackjs.com/loaders"><span style="color: rgba(153, 51, 0, 1)">loader</span></a></span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">ExtractTextWebpackPlugin（extract-text-webpack-plugin）--&nbsp;Extract text from a bundle, or bundles, into a separate file.</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">CopyWebpackPlugin（copy-webpack-plugin）--&nbsp;Copies individual files or entire directories to the build directory</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">UglifyjsWebpackPlugin（uglifyjs-webpack-plugin）--&nbsp;This plugin uses&nbsp;<a href="https://github.com/mishoo/UglifyJS2/tree/harmony"><span style="color: rgba(153, 51, 0, 1)">UglifyJS v3&nbsp;</span></a><a href="https://npmjs.com/package/uglify-es"><span style="color: rgba(153, 51, 0, 1)">(<code>uglify-es</code>)</span></a>&nbsp;to minify your JavaScript</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">DllPlugin --&nbsp;<code>DLLPlugin</code>&nbsp;和&nbsp;<code>DLLReferencePlugin</code>&nbsp;用某种方法实现了拆分 bundles，同时还大大提升了构建的速度。</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">IgnorePlugin --&nbsp;防止在&nbsp;<code>import</code>&nbsp;或&nbsp;<code>require</code>&nbsp;调用时，生成以下正则表达式匹配的模块：</span></li>
+
+
+
+
+
+
+
+
+
+
+</ol>
+<ul>
+<li class="_mce_act_on" style="list-style-type: none">
+<ul>
+<li style="list-style-type: none">
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)"><code>requestRegExp</code>&nbsp;匹配(test)资源请求路径的正则表达式。</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)"><code>contextRegExp</code>&nbsp;（可选）匹配(test)资源上下文（目录）的正则表达式。</span></li>
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+</li>
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+</li>
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p>4、babel 和 webpack 的区别</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">Babel --&gt; JS 新语法编译工具，不关心模块化</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">webpack --&gt; 打包构建工具，是多个 loader plugin的集合</span></li>
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p>5、webpack 如何实现懒加载</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">import()</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">结合Vue React 异步组件</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">结合vue-router React-router 异步加载路由</span></p>
+<p>6、为何 Proxy 不能被 Polyfill</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">如class 可以用 function 模拟</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">如 Promise 可以用 callback 模拟</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">但 Proxy 的功能用 Object.defineProperty 无法模拟（没有任何一个语法可以模拟 Proxy）</span></p>
+<p>7、如何产出一个lib</p>
+<p>答案：</p>
+<p><img src="prefectTest/2086015-20200902123515539-690993864.png" alt="" loading="lazy" class="medium-zoom-image"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>8、webpack 常见性能优化</p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">webpack 优化构建速度（可用于生产）</span></li>
+
+
+
+
+
+
+
+
+
+</ul>
+<ol>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">优化 babel-loader</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">IgnorePlugin</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">noParse</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">happyPack</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">ParallelUgligyPlugin</span></li>
+
+
+
+
+
+
+
+
+
+</ol>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">webpack 优化构建速度（不可用于生产）</span></li>
+
+
+
+
+
+
+
+
+
+</ul>
+<ol>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">自动刷新</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">热更新</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">DllPlugin</span></li>
+
+
+
+
+
+
+
+
+
+</ol>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">webpack 优化产出代码</span></li>
+
+
+
+
+
+
+
+
+
+</ul>
+<ol>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">小图片 base64 编码</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">bundle 加 hash</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">懒加载</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">提取公共代码</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">使用 CDN 加速</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">IgnorePlugin</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">使用 Production</span></li>
+<li style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">Scope Hosting</span></li>
+
+
+
+
+
+
+
+
+
+</ol>
+<p><span style="color: rgba(0, 0, 0, 1)">9、babel-runtime 和 babel-polyfill 的区别</span></p>
+<p style="margin-left: 30px"><span style="color: rgba(153, 51, 0, 1)">答案：</span></p>
+<ul>
+<li><span style="color: rgba(153, 51, 0, 1)">babel-polyfill 会污染全局</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">babel-runtime 不会污染全局</span></li>
+<li><span style="color: rgba(153, 51, 0, 1)">产出第三方 lib 要用 babel-runtime</span></li>
+
+
+
+
+
+
+
+
+
+</ul>
+<p>&nbsp;</p>
+<h3>框架综合应用</h3>
+<p>1、基于 Vue 设计一个购物车（组件结构，vuex state 数据结构）</p>
+<p>&nbsp;</p>
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block"><div id="BlogPostCategory">
+    分类: 
+            <a href="https://www.cnblogs.com/queenya/category/1807924.html" target="_blank">web前端</a></div>
+
+
+    <div id="blog_post_info">
+<div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(13572754,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+        <a id="green_channel_follow" onclick="follow(&#39;c83af415-5d48-44ba-fa96-08d81c38b45b&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="prefectTest/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="prefectTest/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/queenya/" target="_blank"><img src="prefectTest/sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/queenya/">queenya_zhang</a><br>
+            <a href="https://home.cnblogs.com/u/queenya/followees/">关注 - 0</a><br>
+            <a href="https://home.cnblogs.com/u/queenya/followers/">粉丝 - 2</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;c83af415-5d48-44ba-fa96-08d81c38b45b&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(13572754,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">1</span>
+    </div>
+    <div class="buryit" onclick="votePost(13572754,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+    <div class="clear"></div>
+    <div id="post_next_prev">
+
+    <a href="https://www.cnblogs.com/queenya/p/13426695.html" class="p_n_p_prefix">« </a> 上一篇：    <a href="https://www.cnblogs.com/queenya/p/13426695.html" title="发布于 2020-08-03 15:48">MVVM 框架</a>
+    <br>
+    <a href="https://www.cnblogs.com/queenya/p/13640656.html" class="p_n_p_prefix">» </a> 下一篇：    <a href="https://www.cnblogs.com/queenya/p/13640656.html" title="发布于 2020-09-09 18:55">JS 运行机制</a>
+
+</div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2020-09-02 18:23</span>&nbsp;
+<a href="https://www.cnblogs.com/queenya/">queenya_zhang</a>&nbsp;
+阅读(<span id="post_view_count">11505</span>)&nbsp;
+评论(<span id="post_comment_count">1</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13572754" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(13572754);return false;">收藏</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script src="prefectTest/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 614168, cb_blogApp = 'queenya', cb_blogUserGuid = 'c83af415-5d48-44ba-fa96-08d81c38b45b';
+    var cb_entryId = 13572754, cb_entryCreatedDate = '2020-09-02 18:23', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder">
+
+<div id="comment_pager_top">
+    
+</div>
+
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems">
+    <div class="feedbackNoItems"></div>
+</div>
+    <div class="feedbackItem">
+        <div class="feedbackListSubtitle">
+            <div class="feedbackManage">
+                &nbsp;&nbsp;
+
+<span class="comment_actions">
+    
+    
+    
+    
+</span>
+
+
+            </div>
+            
+<a href="https://www.cnblogs.com/queenya/p/13572754.html#4828147" class="layer">#1楼</a>
+<a name="4828147" id="comment_anchor_4828147"></a>
+    <span id="comment-maxId" style="display: none">4828147</span>
+    <span id="comment-maxDate" style="display: none">2021/3/2 上午1:31:41</span>
+ 
+<span class="comment_date">2021-03-02 01:31</span>
+
+ 
+        <a id="a_comment_author_4828147" href="https://www.cnblogs.com/KaYo/" target="_blank">前端吕小布</a>
+
+        </div>
+        <div class="feedbackCon">
+            
+<div id="comment_body_4828147" data-format-type="Markdown" class="blog_comment_body cnblogs-markdown">
+    <p>大佬自己整理的吗？真的很强，深度好文</p>
+
+</div>
+        <div class="comment_vote">
+            <span class="comment_error" style="color: red"></span>
+            <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(4828147, &#39;Digg&#39;, this.parentElement, false);">
+                支持(0)
+            </a>
+            <a href="javascript:void(0);" class="comment_burry" onclick="return voteComment(4828147, &#39;Bury&#39;, this.parentElement, false);">
+                反对(0)
+            </a>
+        </div>
+        <span id="comment_4828147_avatar" style="display:none">
+            https://pic.cnblogs.com/face/2160550/20200919201730.png
+        </span>
+
+        </div>
+    </div>
+
+<div id="comment_pager_bottom">
+    
+</div>
+
+
+</div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/queenya/p/13572754.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/queenya/p/13572754.html#top">返回顶部</a></div>
+    <div id="comment_form_container" style="visibility: visible;"><div class="login_tips">
+    登录后才能发表评论，立即 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或
+    <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，
+    <a href="https://www.cnblogs.com/">访问</a> 网站首页
+</div>
+</div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"><a href="https://developer.aliyun.com/learning/trainingcamp/sc/3?utm_content=g_1000248097" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-阿里云-flink&#39;)">【推荐】阿里云实时计算 Flink 训练营重磅开启，4天技能突破，抢天猫精灵！</a><br><a href="https://developer.aliyun.com/learning/topic/covid-19/2021?utm_content=g_1000240877" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-阿里云-offer&#39;)">【推荐】阿里云春招即将开始，提前下载面试宝典稳拿Offer</a><br><a href="http://www.uccpsoft.com/index.htm" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-ucancode&#39;)">【推荐】大型组态、工控、仿真、CAD\GIS 50万行VC++源码免费下载!</a><br><a href="https://developer.aliyun.com/topic/haoyun?utm_content=g_1000241555" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-阿里云-好云&#39;)">【推荐】免费领最高6000元好云礼！15种权益祝你云气爆棚</a><br><a href="https://developer.aliyun.com/learning/trainingcamp/java/2?utm_content=g_1000245293" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-阿里云-java2&#39;)">【推荐】阿里云Java训练营，名师带你5天实战Spring Boot 2.5，抢智能音箱</a><br><a href="https://www.cnblogs.com/cmt/p/14469606.html" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-AWS&#39;)">【推荐】注册 Amazon Web Services(AWS) 账号，成为博客园赞助者</a><br><a href="https://brands.cnblogs.com/huawei" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-华为专区&#39;)">【推荐】华为HMS Core Discovery直播间-七个推送技巧带你玩转App运营</a><br></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id="div-gpt-ad-1592365906576-0" style="width: 300px; height: 250px;" data-google-query-id="CKiu-JWtp-8CFcuAvQodYjMPhA"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C1_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C1_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="prefectTest/saved_resource.html"></iframe></div></div>
+    </div>
+    <div id="under_post_card1"><div class="under-post-card"><b>AWS免费产品</b>：<br>· <a onclick="ga(&quot;send&quot;, &quot;event&quot;, &quot;Link&quot;, &quot;click&quot;, &quot;aws-underpost-card&quot;)" href="https://aws.amazon.com/cn/free/webapps/?trk=ba_a134p000006vc6OAAQ&amp;trkCampaign=webapps&amp;sc_channel=ba&amp;sc_campaign=cnblogs&amp;sc_outcome=Acquisition&amp;sc_geo=CHNA&amp;sc_country=CN&amp;sc_publisher=Others" target="_blank">如何在AWS上免费构建网站</a><br>· <a onclick="ga(&quot;send&quot;, &quot;event&quot;, &quot;Link&quot;, &quot;click&quot;, &quot;aws-underpost-card&quot;)" href="https://aws.amazon.com/cn/free/storage/?trk=ba_a134p000006vc7JAAQ&amp;trkCampaign=storage&amp;sc_channel=ba&amp;sc_campaign=cnblogs&amp;sc_outcome=Acquisition&amp;sc_geo=CHNA&amp;sc_country=CN&amp;sc_publisher=Others" target="_blank">AWS免费云存储解决方案</a><br>· <a onclick="ga(&quot;send&quot;, &quot;event&quot;, &quot;Link&quot;, &quot;click&quot;, &quot;aws-underpost-card&quot;)" href="https://aws.amazon.com/cn/free/database/?trk=ba_a134p000006vc7YAAQ&amp;trkCampaign=database&amp;sc_channel=ba&amp;sc_campaign=cnblogs&amp;sc_outcome=Acquisition&amp;sc_geo=CHNA&amp;sc_country=CN&amp;sc_publisher=Others" target="_blank">在AWS上免费构建数据库</a><br>· <a onclick="ga(&quot;send&quot;, &quot;event&quot;, &quot;Link&quot;, &quot;click&quot;, &quot;aws-underpost-card&quot;)" href="https://aws.amazon.com/cn/free/machine-learning/?trk=ba_a134p000006vc7nAAA&amp;trkCampaign=ML&amp;sc_channel=ba&amp;sc_campaign=cnblogs&amp;sc_outcome=Acquisition&amp;sc_geo=CHNA&amp;sc_country=CN&amp;sc_publisher=Others" target="_blank">AWS上的免费机器学习</a></div></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id="div-gpt-ad-1592366332455-0" style="width: 468px; height: 60px;" data-google-query-id="CKmu-JWtp-8CFcuAvQodYjMPhA"><div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C2_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C2_0" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="2" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="prefectTest/saved_resource(1).html"></iframe></div></div>
+    </div>
+    <div id="under_post_card2"><div class="itnews under-post-card">
+    <b>最新新闻</b>：
+    <br>
+ ·          <a href="https://news.cnblogs.com/n/689995/" target="_blank">算法“视”界杯强势来袭，2021腾讯广告算法大赛正式开启！</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/689948/" target="_blank">百度持股公司公开“一种车辆运输用磁悬浮缓冲装置”的专利</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/689952/" target="_blank">运动员本科保送推荐名单：围棋九段党毅飞保送清华大学 成柯洁校友</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/689992/" target="_blank">亏损之后，携程能否卷土重来？</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/689991/" target="_blank">推荐和视频开始侵蚀各行各业</a>
+        <br>
+    » <a href="https://news.cnblogs.com/" title="IT 新闻" target="_blank">更多新闻...</a>
+</div></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem"><!--done-->
+<h3 class="catListTitle">公告</h3>
+
+<div id="blog-news">
+    
+    <div id="profile_block">
+        昵称：
+        <a href="https://home.cnblogs.com/u/queenya/">
+            queenya_zhang
+        </a>
+        <br>
+        园龄：
+        <a href="https://home.cnblogs.com/u/queenya/" title="入园时间：2020-07-02">
+            8个月
+        </a>
+        <br>
+        粉丝：
+        <a href="https://home.cnblogs.com/u/queenya/followers/">
+            2
+        </a>
+        <br>
+        关注：
+        <a href="https://home.cnblogs.com/u/queenya/followees/">
+            0
+        </a>
+        <div id="p_b_follow">
+<a href="javascript:void(0)" onclick="follow(&#39;c83af415-5d48-44ba-fa96-08d81c38b45b&#39;)">+加关注</a></div>
+        <script>getFollowStatus('c83af415-5d48-44ba-fa96-08d81c38b45b');</script>
+    </div>
+</div>
+
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="">
+
+<table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar" border="0">
+    <tbody>
+        <tr>
+            <td colspan="7">
+                <table class="CalTitle" cellspacing="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2021/02/11&#39;); return false;">&lt;</a>
+                            </td>
+                            <td align="center">2021年3月</td>
+                            <td align="right" class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2021/04/11&#39;); return false;">&gt;</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    <tr>
+        <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+        <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+        <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+        <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+        <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+        <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+        <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+    </tr>
+            <tr>
+                            <td class="CalOtherMonthDay" align="center">28</td>
+                        <td class="" align="center">
+                            1
+                        </td>
+                        <td class="" align="center">
+                            2
+                        </td>
+                        <td class="" align="center">
+                            3
+                        </td>
+                        <td class="" align="center">
+                            4
+                        </td>
+                        <td class="" align="center">
+                            5
+                        </td>
+                    <td class="CalWeekendDay" align="center">
+                        6
+                    </td>
+            </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            7
+                        </td>
+                            <td class="" align="center">
+                                8
+                            </td>
+                            <td class="" align="center">
+                                9
+                            </td>
+                            <td class="" align="center">
+                                10
+                            </td>
+                            <td class="CalTodayDay" align="center">
+                                11
+                            </td>
+                            <td class="" align="center">
+                                12
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            13
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            14
+                        </td>
+                            <td class="" align="center">
+                                15
+                            </td>
+                            <td class="" align="center">
+                                16
+                            </td>
+                            <td class="" align="center">
+                                17
+                            </td>
+                            <td class="" align="center">
+                                18
+                            </td>
+                            <td class="" align="center">
+                                19
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            20
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            21
+                        </td>
+                            <td class="" align="center">
+                                22
+                            </td>
+                            <td class="" align="center">
+                                23
+                            </td>
+                            <td class="" align="center">
+                                24
+                            </td>
+                            <td class="" align="center">
+                                25
+                            </td>
+                            <td class="" align="center">
+                                26
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            27
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            28
+                        </td>
+                            <td class="" align="center">
+                                29
+                            </td>
+                            <td class="" align="center">
+                                30
+                            </td>
+                            <td class="" align="center">
+                                31
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                1
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                2
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            3
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalOtherMonthDay" align="center">
+                            4
+                        </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                5
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                6
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                7
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                8
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                9
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            10
+                        </td>
+                </tr>
+    </tbody>
+</table></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><!-- 搜索 -->
+<div id="sidebar_search" class="sidebar-block">
+    <div id="sidebar_search" class="mySearch">
+        <h3 class="catListTitle">搜索</h3>
+        <div id="sidebar_search_box">
+            <div id="widget_my_zzk" class="div_my_zzk">
+                <input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk">
+            </div>
+            <div id="widget_my_google" class="div_my_zzk">
+                <input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 常用链接 -->
+<div id="sidebar_shortcut" class="sidebar-block"><div class="catListLink">
+<h3 class="catListTitle">
+常用链接
+</h3>
+<ul>
+    
+<li><a href="https://www.cnblogs.com/queenya/p/" title="我的博客的随笔列表">我的随笔</a></li>
+<li><a href="https://www.cnblogs.com/queenya/MyComments.html" title="我的发表过的评论列表">我的评论</a></li>
+<li><a href="https://www.cnblogs.com/queenya/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li>
+<li><a href="https://www.cnblogs.com/queenya/RecentComments.html" title="我的博客的评论列表">最新评论</a></li>
+<li><a href="https://www.cnblogs.com/queenya/tag/" title="我的博客的标签列表">我的标签</a></li>
+
+</ul>
+</div>
+
+</div>
+
+<!-- 最新随笔 -->
+
+
+<!-- 我的标签 -->
+<div id="sidebar_toptags" class="sidebar-block"></div>
+
+<!-- 积分与排名 -->
+
+
+<!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
+<div id="sidebar_categories">
+
+    <div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+        <h3 class="catListTitle">
+            
+随笔分类
+
+
+
+        </h3>
+
+        <ul>
+
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/queenya/category/1826005.html" rel="" target="">
+    JS 基础(3)
+</a>
+ 
+
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/queenya/category/1807924.html" rel="" target="">
+    web前端(8)
+</a>
+ 
+
+                </li>                
+            
+        </ul>
+
+
+    </div>    
+    <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+        <h3 class="catListTitle">
+            
+随笔档案
+
+
+
+        </h3>
+
+        <ul>
+
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/queenya/archive/2020/11.html" rel="" target="">
+    2020年11月(1)
+</a>
+ 
+
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/queenya/archive/2020/09.html" rel="" target="">
+    2020年9月(7)
+</a>
+ 
+
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/queenya/archive/2020/08.html" rel="" target="">
+    2020年8月(2)
+</a>
+ 
+
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/queenya/archive/2020/07.html" rel="" target="">
+    2020年7月(1)
+</a>
+ 
+
+                </li>                
+            
+        </ul>
+
+
+    </div>    
+</div>
+
+<!-- 最新评论 -->
+<div id="sidebar_recentcomments" class="sidebar-block"><div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div class="RecentCommentBlock">
+        <ul>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/queenya/p/13572754.html">1. Re:前端面试题汇总</a></li>
+                    <li class="recent_comment_body"><p>大佬自己整理的吗？真的很强，深度好文</p>
+</li>
+                    <li class="recent_comment_author">--前端吕小布</li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+
+<!-- 阅读排行榜 -->
+<div id="sidebar_topviewedposts" class="sidebar-block"><div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/queenya/p/13572754.html">
+                            1. 前端面试题汇总(11439)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/queenya/p/13426695.html">
+                            2. MVVM 框架(1554)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/queenya/p/13655006.html">
+                            3. HTTP 协议类(210)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/queenya/p/13659441.html">
+                            4. 原型和原型链(201)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/queenya/p/13416654.html">
+                            5. VUE 生命周期(198)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+<!-- 评论排行榜 -->
+<div id="sidebar_topcommentedposts" class="sidebar-block"><div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/queenya/p/13572754.html">
+                            1. 前端面试题汇总(1)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+<!-- 推荐排行榜 -->
+<div id="sidebar_topdiggedposts" class="sidebar-block">
+<div id="topdigg_posts_wrap">
+    <div class="catListView">
+        <h3 class="catListTitle">推荐排行榜</h3>
+        <div id="TopDiggPostsBlock">
+            <ul style="word-break: break-all">
+                        <li>
+                            <a href="https://www.cnblogs.com/queenya/p/13572754.html">
+                                1. 前端面试题汇总(1)
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+</div></div></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright © 2021 queenya_zhang
+<br><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8EklyHYHyB5Oj4onWtxTnxa8KBzDT5xlrKxcjCQx0OcqhQgWey5nkcdwB3MQJgwtzCHkru_o5QHlIv60RyObsf693t6AHS6vRicilfBZsWYyTa6glMnr43Zc3W81vXF1SCK7a8DHppHAdMugvkv5Zn8">
+
+
+<iframe id="google_osd_static_frame_6027102675581" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="prefectTest/saved_resource(2).html"></iframe></body></html>

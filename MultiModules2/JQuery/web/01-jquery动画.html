@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery快速入门</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        /**
+         * 动画
+         *      1、三种方式显示和隐藏
+         *          1、默认显示和隐藏
+         *              1、show([speed, [easing], [fn]])
+         *                  参数：
+         *                      speed：动画的速度 三个预定义的值（"slow"， "normal"， "fast"），毫秒值
+         *                      easing：用来指定切换效果，默认"swing"， 可用参数"linear"
+         *                          swing：先慢，中间快，结束慢
+         *                          linear：匀速
+         *                      fn：动画执行完后的回调函数
+         *              2、hide([speed, [easing], [fn]])
+         *              3、toggle([speed, [easing], [fn]])
+         *          2、滑动显示和隐藏方式
+         *              1、slideDown([speed, [easing], [fn]])
+         *              2、slideUp([speed, [easing], [fn]])
+         *              3、slideToggle([speed, [easing], [fn]])
+         *          3、淡入淡出显示和隐藏方式
+         *              1、fadeIn([speed, [easing], [fn]])
+         *              2、fadeOut([speed, [easing], [fn]])
+         *              3、fadeToggle([speed, [easing], [fn]])
+         */
+
+
+        function hideFn() {
+            $("#showDiv").hide("slow", "swing", function () {
+                console.log("div隐藏了")
+            })
+        }
+        function showFn() {
+            $("#showDiv").show("slow", "swing", function () {
+                console.log("div显示了")
+            })
+        }
+        function toggleFn() {
+            $("#showDiv").toggle("slow", "swing", function () {
+                console.log("div切换了")
+            })
+        }
+
+        function slideDownFn() {
+            $("#showDiv").slideDown("slow", "swing", function () {
+                console.log("div滑动显示了")
+            })
+        }
+        function slideUpFn() {
+            $("#showDiv").slideUp("slow", "swing", function () {
+                console.log("div滑动隐藏了")
+            })
+        }
+        function slideToggleFn() {
+            $("#showDiv").slideToggle("slow", "swing", function () {
+                console.log("div滑动切换了")
+            })
+        }
+        function fadeOutFn() {
+            $("#showDiv").fadeOut("slow", "swing", function () {
+                console.log("div淡出了")
+            })
+        }
+        function fadeInFn() {
+            $("#showDiv").fadeIn("slow", "swing", function () {
+                console.log("div淡入了")
+            })
+        }
+        function fadeToggleFn() {
+            $("#showDiv").fadeToggle("slow", "swing", function () {
+                console.log("div淡入淡出了")
+            })
+        }
+    </script>
+    <style>
+        #showDiv {
+            width: 100px;
+            height: 100px;
+            background-color: #2aabd2;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="button" value="点击按钮隐藏div" onclick="hideFn()">
+    <input type="button" value="点击按钮显示div" onclick="showFn()">
+    <input type="button" value="点击按钮切换div的显示与隐藏" onclick="toggleFn()">
+
+    <br>
+    <input type="button" value="点击按钮滑动显示div" onclick="slideDownFn()">
+    <input type="button" value="点击按钮滑动隐藏div" onclick="slideUpFn()">
+    <input type="button" value="点击按钮滑动切换div的显示与隐藏" onclick="slideToggleFn()">
+
+    <br>
+    <input type="button" value="点击按钮淡入淡出隐藏div" onclick="fadeOutFn()">
+    <input type="button" value="点击按钮淡入淡出显示div" onclick="fadeInFn()">
+    <input type="button" value="点击按钮淡入淡出切换div的显示与隐藏" onclick="fadeToggleFn()">
+
+    <div id="showDiv">
+
+    </div>
+
+
+</body>
+</html>

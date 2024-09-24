@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态表格</title>
+    <style>
+        table {
+            border: 1px solid;
+            margin: auto;
+            width: 500px;
+        }
+        td,th {
+            text-align: center;
+            border: 1px solid;
+        }
+        div {
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" placeholder="请输入编号" id="id">
+    <input type="text" placeholder="请输入姓名" id="name">
+    <input type="text" placeholder="请输入性别" id="sex">
+    <input type="submit" value="添加" id="btn_add">
+</div>
+
+<table id="table">
+    <caption>学生信息表</caption>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>操作</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>王昭君</td>
+        <td>女</td>
+        <td>
+            <a href="javascript:void(0)" onclick="del(this)">删除</a>
+        </td>
+    </tr>
+</table>
+<script>
+    var del = function (obj) {
+        var table = obj.parentNode.parentNode.parentNode
+        var tr = obj.parentNode.parentNode
+        table.removeChild(tr)
+    }
+
+    var btn_add = document.getElementById("btn_add");
+    var table = document.getElementById("table");
+    btn_add.onclick = function () {
+        var id = document.getElementById("id").value;
+        var name = document.getElementById("name").value;
+        var sex = document.getElementById("sex").value;
+
+        table.innerHTML += "<tr>\n" +
+            "        <td>"+id+"</td>\n" +
+            "        <td>"+name+"</td>\n" +
+            "        <td>"+sex+"</td>\n" +
+            "        <td>\n" +
+            "            <a href=\"javascript:void(0)\" onclick=\"del(this)\">删除</a>\n" +
+            "        </td>\n" +
+            "    </tr>"
+        // var td_id = document.createElement("td");
+        // var td_name = document.createElement("td");
+        // var td_sex = document.createElement("td");
+        // var td_action = document.createElement("td");
+        // var a_del = document.createElement("a");
+        // var tr = document.createElement("tr");
+        // td_id.innerHTML = id
+        // td_name.innerHTML = name
+        // td_sex.innerHTML = sex
+        //
+        // a_del.innerHTML="删除"
+        // a_del.setAttribute("href", "javascript:void(0)")
+        // a_del.setAttribute("onclick", "del(this)")
+        // td_action.appendChild(a_del)
+        //
+        // tr.appendChild(td_id)
+        // tr.appendChild(td_name)
+        // tr.appendChild(td_sex)
+        // tr.appendChild(td_action)
+        // table.appendChild(tr)
+    }
+
+
+</script>
+<!--<link rel="modulepreload" type="text/javascript" href="action.js" />-->
+</body>
+</html>

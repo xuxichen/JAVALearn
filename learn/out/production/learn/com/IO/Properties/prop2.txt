@@ -1,0 +1,8 @@
+#stream save data
+#Mon Mar 08 10:44:12 CST 2021
+dd=\u53E4\u529B\u5A1C\u624E
+aa=HELLO
+\u4F5F\u4E3D\u5A05=29
+bb=WORLD
+B=true
+cc=JAVA

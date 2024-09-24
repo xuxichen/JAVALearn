@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Window对象</title>
+
+
+</head>
+<body>
+    <input type="button" value="打开新页面" id="openBtn">
+    <input type="button" value="关闭新页面" id="closeBtn">
+    <script>
+        // alert("hello window")
+        // window.alert("window对象的alert")
+
+        // var flag = confirm("您确定要退出么？")
+        // alert(flag)
+
+        // var s = prompt("用户名","请输入合适的名字")
+        // alert(s)
+        var openBtn = document.getElementById("openBtn")
+        var newWindow
+        openBtn.onclick = function() {
+            newWindow = open()
+        }
+
+        var closeBtn = document.getElementById("closeBtn")
+        closeBtn.onclick = function() {
+            newWindow.close()
+        }
+    </script>
+</body>
+</html>

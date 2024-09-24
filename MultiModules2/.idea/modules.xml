@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Cookie&amp;&amp;Session/Cookie&amp;&amp;Session.iml" filepath="$PROJECT_DIR$/Cookie&amp;&amp;Session/Cookie&amp;&amp;Session.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JQuery/JQuery.iml" filepath="$PROJECT_DIR$/JQuery/JQuery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LoginDemo/LoginDemo.iml" filepath="$PROJECT_DIR$/LoginDemo/LoginDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Redis/Redis.iml" filepath="$PROJECT_DIR$/Redis/Redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UserCRUD_demo/UserCRUD_demo.iml" filepath="$PROJECT_DIR$/UserCRUD_demo/UserCRUD_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/el&amp;jstl/el&amp;jstl.iml" filepath="$PROJECT_DIR$/el&amp;jstl/el&amp;jstl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/filter&amp;listener/filter&amp;listener.iml" filepath="$PROJECT_DIR$/filter&amp;listener/filter&amp;listener.iml" />
+      <module fileurl="file://$PROJECT_DIR$/servlet&amp;http&amp;request/servlet&amp;http&amp;request.iml" filepath="$PROJECT_DIR$/servlet&amp;http&amp;request/servlet&amp;http&amp;request.iml" />
+    </modules>
+  </component>
+</project>

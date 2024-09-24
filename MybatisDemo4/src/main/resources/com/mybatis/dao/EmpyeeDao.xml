@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.dao.EmpyeeDao">
+
+
+<!--    private Integer id;-->
+<!--    private String ename;-->
+<!--    private Integer job_id;-->
+<!--    private Dept dept;-->
+<!--    private String mgr_name;-->
+<!--    private Date joindate;-->
+<!--    private Double salary;-->
+<!--    private Double bonus;-->
+<!--    private Integer dept_id;-->
+<!--    private Job job;-->
+    <!-- 定义封装Empyee和dept和job的resultMap -->
+    <resultMap id="empyeedeptjobMap" type="empyee">
+        <id property="id" column="id"/>
+        <result property="ename" column="ename"/>
+        <result property="job_id" column="job_id"/>
+        <result property="mgr_name" column="mgr_name"/>
+        <result property="joindate" column="joindate"/>
+        <result property="salary" column="salary"/>
+        <result property="bonus" column="bonus"/>
+        <result property="dept_id" column="dept_id"/>
+        <!-- 配置一对一的关系映射，封装 Dept和job对象     -->
+        <association property="dept" column="dept_id">
+<!--            private Integer id;-->
+<!--            private String dname;-->
+<!--            private String loc;-->
+            <id property="id" column="id"/>
+            <result property="dname" column="dname"/>
+            <result property="loc" column="loc"/>
+        </association>
+
+        <association property="job" column="job_id">
+<!--            private Integer id;-->
+<!--            private String jname;-->
+<!--            private String description;-->
+            <id property="id" column="id"/>
+            <result property="jname" column="jname"/>
+            <result property="description" column="description"/>
+        </association>
+    </resultMap>
+
+    <!--配置查询所有-->
+    <select id="findAll" resultMap="empyeedeptjobMap">
+        SELECT
+            empyee.id,
+            ename,
+            job_id,
+            salary,
+            bonus,
+            jname,
+            description,
+            (select ename from empyee t2 where empyee.mgr = t2.id) mgr_name,
+            joindate,
+            dept_id,
+            dname,
+            loc
+        FROM empyee, job, dept
+        WHERE job_id=job.id AND dept_id=dept.id;
+    </select>
+
+    <!-- 配置查询所有雇员他们的职位和部门信息    -->
+    <select id="findAllEmpyee" resultType="empyeedeptjob">
+        SELECT
+            empyee.id,
+            ename,
+            job_id,
+            salary,
+            bonus,
+            jname,
+            description,
+            (select ename from empyee t2 where empyee.mgr = t2.id) mgr_name,
+            joindate,
+            dept_id,
+            dname,
+            loc
+        FROM empyee, job, dept
+        WHERE job_id=job.id AND dept_id=dept.id;
+    </select>
+
+</mapper>

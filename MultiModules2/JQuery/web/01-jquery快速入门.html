@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery快速入门</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        // window.onload = function () {
+        //     // 获取js对象
+        //     var div1 = document.getElementById("div1");
+        //
+        //     // 获取jquery对象
+        //     var $div2 = $("#div2");
+        //
+        //     // alert(div3.innerHTML())
+        //
+        //     // js 对象和jquery对象转换
+        //     //1、js对象转jquery对象
+        //     $(div1).html("ccc")
+        //     //2、jquery对象转js对象
+        //     var newVar = $div2.get(0);
+        //     newVar.innerHTML = "ddd"
+        //
+        //     // 给按钮绑定事件
+        //     $("#b1").click(function () {
+        //         alert("jquery点击事件")
+        //     })
+        // }
+
+
+        // jquery 入口函数（dom 文档加载完之后执行该函数中的代码）
+        $(function () {
+            // 获取js对象
+            var div1 = document.getElementById("div1");
+
+            // 获取jquery对象
+            var $div2 = $("#div2");
+
+            // alert(div3.innerHTML())
+
+            // js 对象和jquery对象转换
+            //1、js对象转jquery对象
+            $(div1).html("ccc")
+            //2、jquery对象转js对象
+            var newVar = $div2.get(0);
+            newVar.innerHTML = "ddd"
+
+            // 给按钮绑定事件
+            $("#b1").click(function () {
+                alert("jquery点击事件")
+            })
+        })
+
+    </script>
+</head>
+<body>
+
+    <div id="div1">div1...</div>
+    <div id="div2">div2...</div>
+    <input type="button" id="b1" value="点我">
+
+    <ul id="">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+</body>
+</html>

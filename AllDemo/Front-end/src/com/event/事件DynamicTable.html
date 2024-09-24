@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态表格</title>
+    <style>
+        table {
+            border: 1px solid;
+            margin-left: 30%;
+            width: 500px;
+        }
+        td,th {
+            text-align: center;
+            border: 1px solid;
+        }
+        div {
+            margin-top: 50px;
+            margin-left: 30%;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var del = function (obj) {
+                var table = obj.parentNode.parentNode.parentNode
+                var tr = obj.parentNode.parentNode
+                table.removeChild(tr)
+            }
+
+            var btn_add = document.getElementById("btn_add");
+            var table = document.getElementById("table");
+            btn_add.onclick = function () {
+                var id = document.getElementById("id").value;
+                var name = document.getElementById("name").value;
+                var sex = document.getElementById("sex").value;
+
+                table.innerHTML += "<tr>\n" +
+                    "        <td><input type=\"checkbox\" name=\"check\"></td>\n" +
+                    "        <td>"+id+"</td>\n" +
+                    "        <td>"+name+"</td>\n" +
+                    "        <td>"+sex+"</td>\n" +
+                    "        <td>\n" +
+                    "            <a href=\"javascript:void(0)\" onclick=\"del(this)\">删除</a>\n" +
+                    "        </td>\n" +
+                    "    </tr>"
+            }
+
+            var headcheck = document.getElementById("headcheck");
+            headcheck.onmousedown=function (event) {
+                if (headcheck.checked == false) {
+                    var checks = document.getElementsByName("check");
+                    checks.forEach((checker)=>{
+                        // checker.setAttribute("checked", true)
+                        checker.checked = true
+                    })
+                } else {
+                    var checks = document.getElementsByName("check");
+                    checks.forEach((checker)=>{
+                        // checker.setAttribute("checked", false)
+                        checker.checked = false
+                    })
+                }
+            }
+
+            var allSelect = document.getElementById("allSelect");
+            allSelect.onmousedown=function (event) {
+                var checks = document.getElementsByName("check");
+                checks.forEach((checker)=>{
+                    checker.checked = true
+                })
+                headcheck.checked = true
+            }
+            var alldisSelect = document.getElementById("alldisSelect");
+            alldisSelect.onmousedown=function (event) {
+                var checks = document.getElementsByName("check");
+                checks.forEach((checker)=>{
+                    checker.checked = false
+                })
+                headcheck.checked = false
+            }
+            var reveSelect = document.getElementById("reveSelect");
+            reveSelect.onmousedown=function (event) {
+                var checks = document.getElementsByName("check");
+                headstate = true
+                checks.forEach((checker)=>{
+                    checker.checked = !checker.checked
+                    if (checker.checked == false) {
+                        headstate = false
+                    }
+                })
+                headcheck.checked = headstate
+            }
+
+            var trs = document.getElementsByTagName("tr")
+            // trs.forEach((tr)=>{
+            //     tr.onmouseover = function (event) {
+            //         tr.style.backgroundColor = 'red'
+            //     }
+            // })
+            for (var i=0; i<trs.length; i++) {
+                var tr = trs[i]
+                tr.onmouseover = function (event) {
+                    event.currentTarget.style.backgroundColor = 'red'
+                }
+                tr.onmouseout = function (event) {
+                    event.currentTarget.style.backgroundColor = 'white'
+                }
+
+            }
+
+        }
+    </script>
+
+</head>
+<body>
+<div id="div1">
+    <input type="text" placeholder="请输入编号" id="id">
+    <input type="text" placeholder="请输入姓名" id="name">
+    <input type="text" placeholder="请输入性别" id="sex">
+    <input type="submit" value="添加" id="btn_add">
+</div>
+
+<table id="table">
+    <caption>学生信息表</caption>
+    <tr>
+        <th><input type="checkbox" id="headcheck"></th>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>操作</th>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="check"></td>
+        <td>1</td>
+        <td>王昭君</td>
+        <td>女</td>
+        <td>
+            <a href="javascript:void(0)" onclick="del(this)">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="check"></td>
+        <td>2</td>
+        <td>荆轲</td>
+        <td>男</td>
+        <td>
+            <a href="javascript:void(0)" onclick="del(this)">删除</a>
+        </td>
+    </tr>
+</table>
+
+<div>
+    <input type="button" value="全选" id="allSelect">
+    <input type="button" value="全不选" id="alldisSelect">
+    <input type="button" value="反选" id="reveSelect">
+</div>
+
+
+</body>
+</html>

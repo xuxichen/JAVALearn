@@ -1,0 +1,9 @@
+INSERT INTO test.student (id, name, age, score, birthday, insert_time, teacher, sex) VALUES (1, '李嗣源', 29, 646.5, '1992-04-01', '2021-03-18 17:27:39', '徐凤年', '男');
+INSERT INTO test.student (id, name, age, score, birthday, insert_time, teacher, sex) VALUES (2, '小枫', 18, 656.5, '2002-09-09', '2021-03-18 17:55:44', '徐凤年', '女');
+INSERT INTO test.student (id, name, age, score, birthday, insert_time, teacher, sex) VALUES (3, '王爵', 29, 446.5, '1992-04-01', '2021-03-18 17:56:38', '徐凤年', '男');
+INSERT INTO test.student (id, name, age, score, birthday, insert_time, teacher, sex) VALUES (4, '李秀', 30, 698, '1991-04-18', '2021-03-18 17:32:50', '徐凤年', '女');
+INSERT INTO test.student (id, name, age, score, birthday, insert_time, teacher, sex) VALUES (5, '宋英', 30, 583, '1991-04-18', '2021-03-18 17:32:50', '徐凤年', '女');
+INSERT INTO test.student (id, name, age, score, birthday, insert_time, teacher, sex) VALUES (6, '胡天', 31, 569, '1990-06-18', '2021-03-18 17:32:50', '徐凤年', '男');
+INSERT INTO test.student (id, name, age, score, birthday, insert_time, teacher, sex) VALUES (7, '赵立国', 22, 669, '1999-12-15', '2021-03-18 17:32:50', '徐凤年', '男');
+INSERT INTO test.student (id, name, age, score, birthday, insert_time, teacher, sex) VALUES (8, '文仲', 54, 719.9, '1977-01-17', '2021-03-18 17:32:50', '徐凤年', '男');
+INSERT INTO test.student (id, name, age, score, birthday, insert_time, teacher, sex) VALUES (9, '比干', 50, 399, '1977-01-17', '2021-03-19 00:52:19', null, '男');

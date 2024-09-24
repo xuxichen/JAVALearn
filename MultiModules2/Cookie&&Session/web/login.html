@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    <script>
+        window.onload = function () {
+            var img = document.getElementById("img");
+            img.onclick = function () {
+                img.src = "/Cookie__Session_war_exploded/CheckCodeServlet?time=" + new Date().getTime()
+            }
+        }
+    </script>
+</head>
+<body>
+<form action="/Cookie__Session_war_exploded/loginServlet" method="post">
+    <table >
+        <tr>
+            <td><label>姓名</label></td>
+            <td><input type="text" name="username"></td>
+        </tr>
+        <tr>
+            <td><label>密码</label></td>
+            <td><input type="password" name="password"></td>
+        </tr>
+        <tr>
+            <td><label>验证码</label></td>
+            <td><input name="checkcode"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <img id="img" src="/Cookie__Session_war_exploded/CheckCodeServlet">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="登陆">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

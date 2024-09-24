@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.dao.JobDao">
+
+
+    <!-- 定义封装Empyee和dept的resultMap -->
+    <resultMap id="jobempyeeMap" type="job">
+        <id property="id" column="id"/>
+        <result property="jname" column="jname"/>
+        <result property="description" column="description"/>
+
+        <!-- 配置一对多的关系映射，封装 empyee对象     -->
+        <collection property="empyees" column="id" ofType="empyee" select="com.mybatis.dao.EmpyeeDao.findByJobId">
+            <id property="id" column="id"/>
+            <result property="ename" column="ename"/>
+            <result property="job_id" column="job_id"/>
+            <result property="mgr_name" column="mgr_name"/>
+            <result property="joindate" column="joindate"/>
+            <result property="salary" column="salary"/>
+            <result property="dept_id" column="dept_id"/>
+        </collection>
+
+    </resultMap>
+
+    <!--配置查询所有-->
+    <select id="findAll" resultMap="jobempyeeMap">
+--         SELECT
+--             job.id jid,
+--             jname,
+--             description,
+--             e.*
+--         FROM
+--             job
+--         LEFT OUTER JOIN
+--             empyee e
+--         ON
+--             job.id = e.dept_id;
+        SELECT * FROM job;
+    </select>
+
+    <!--根据id查询部门-->
+    <select id="findById" parameterType="INT" resultType="job">
+        SELECT * FROM job WHERE id=#{id}
+    </select>
+</mapper>
